@@ -123,6 +123,7 @@ function displayWeather(response) {
   document.querySelector(
     "#humidity"
   ).innerHTML = `${response.data.main.humidity}`;
+  document.querySelector("#search-city-input").value = ``;
 }
 
 let searchForm = document.querySelector("#search-form");
