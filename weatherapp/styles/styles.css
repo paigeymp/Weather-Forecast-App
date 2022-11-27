@@ -1,0 +1,87 @@
+ul {
+  list-style: none;
+}
+
+footer {
+  text-align: center;
+  font-family: monospace, sans-serif, times;
+  font-size: 10px;
+  color: rgb(185, 174, 175);
+}
+
+.weather-app {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/051/864/original/cloudypixabay.jpg?1667750633");
+  filter: brightness(100%);
+  background-size: cover;
+  color: white;
+  max-width: 800px;
+  display: block;
+  padding: 20px;
+  margin: 20px auto;
+  font-family: "Open Sans", sans-serif;
+}
+
+.currentCity {
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+.units {
+  position: relative;
+  top: -25px;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.clickUnits {
+  font-weight: 100;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+.dayWeather {
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.getData {
+  text-transform: capitalize;
+}
+
+.day-temp-icon {
+  font-size: 25px;
+  margin-right: 1px;
+  position: relative;
+  top: -10px;
+}
+
+.day-temp {
+  font-weight: 600;
+  font-size: 50px;
+}
+
+.forecastTemp {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.forecast {
+  font-size: 14px;
+}
+
+.forecastCondition {
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 5px;
+}
+
+.searchIcon,
+.currentLocationIcon,
+.locationButton,
+.searchBox {
+  font-weight: 200;
+  font-size: 15px;
+  color: #ababb5;
+}
