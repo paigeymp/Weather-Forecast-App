@@ -126,6 +126,61 @@ function displayWeather(response) {
     "#humidity"
   ).innerHTML = `${response.data.temperature.humidity}`;
   document.querySelector("#search-city-input").value = ``;
+  getForecast(response);
+}
+
+function getForecast(response) {
+  let apiKey = "a5c1a8d6ca8307bb18045a8ofa2at259";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${response.data.city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+
+function displayForecast(response) {
+  document.querySelector("#forecast-temp-1").innerHTML = `${Math.round(
+    response.data.daily[0].temperature.day
+  )}`;
+  document.querySelector(
+    "#forecast-icon-1"
+  ).innerHTML = `<img src="${response.data.daily[0].condition.icon_url}">`;
+  document.querySelector("#forecast-description-1").innerHTML =
+    response.data.daily[0].condition.description;
+
+  document.querySelector("#forecast-temp-2").innerHTML = `${Math.round(
+    response.data.daily[1].temperature.day
+  )}`;
+  document.querySelector(
+    "#forecast-icon-2"
+  ).innerHTML = `<img src="${response.data.daily[1].condition.icon_url}">`;
+  document.querySelector("#forecast-description-2").innerHTML =
+    response.data.daily[1].condition.description;
+
+  document.querySelector("#forecast-temp-3").innerHTML = `${Math.round(
+    response.data.daily[2].temperature.day
+  )}`;
+  document.querySelector(
+    "#forecast-icon-3"
+  ).innerHTML = `<img src="${response.data.daily[2].condition.icon_url}">`;
+  document.querySelector("#forecast-description-3").innerHTML =
+    response.data.daily[2].condition.description;
+
+  document.querySelector("#forecast-temp-4").innerHTML = `${Math.round(
+    response.data.daily[3].temperature.day
+  )}`;
+  document.querySelector(
+    "#forecast-icon-4"
+  ).innerHTML = `<img src="${response.data.daily[3].condition.icon_url}">`;
+  document.querySelector("#forecast-description-4").innerHTML =
+    response.data.daily[3].condition.description;
+
+  document.querySelector("#forecast-temp-5").innerHTML = `${Math.round(
+    response.data.daily[4].temperature.day
+  )}`;
+  document.querySelector(
+    "#forecast-icon-5"
+  ).innerHTML = `<img src="${response.data.daily[4].condition.icon_url}">`;
+  document.querySelector("#forecast-description-5").innerHTML =
+    response.data.daily[4].condition.description;
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -137,4 +192,4 @@ currentLocationBtn.addEventListener("click", retrieveLocation);
 //sending to default load
 searchCity("Vancouver");
 
-// we need 5 day forecast, fahrenheit conversion, icons to reflect weather
+// we need fahrenheit conversion
