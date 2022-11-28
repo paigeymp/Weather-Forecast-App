@@ -84,7 +84,7 @@
                     </span>
                     <span id="current-temperature"></span>
                   </span>
-                  <span class="units" id="units-weather">°C</span>
+                  <span class="units" id="selected-unit"></span>
                 </li>
                 <li class="generalText">
                   <em>
@@ -102,14 +102,12 @@
                   <i class="fa-solid fa-droplet day-precip"></i> Humidity:
                   <span id="humidity"></span>%
                 </li>
-                <li>
-                  <a class="clickUnits" id="units-celsius" href="#"
-                    ><span class="clickUnits">°C</span></a
-                  >
-                  <span> | </span>
-                  <a class="clickUnits" id="units-fahrenheit" href="#"
-                    ><span class="clickUnits">°F</span></a
-                  >
+                <li class="generalText">
+                  <span class="linkUnits">
+                    <a class="active" id="units-celsius" href="#"> °C </a>
+                    <span> | </span>
+                    <a id="units-fahrenheit" href="#"> °F </a>
+                  </span>
                 </li>
                 <li class="mt-1 generalText">
                   <em>

@@ -38,10 +38,15 @@ footer {
   font-size: 14px;
 }
 
-.clickUnits {
+.linkUnits {
   font-weight: 100;
   font-size: 14px;
   color: white;
+}
+
+.generalText .active {
+  color: white;
+  cursor: default;
   text-decoration: none;
 }
 

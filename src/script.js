@@ -104,40 +104,13 @@ function searchLocation(position) {
   axios.get(apiUrl).then(displayWeather);
 }
 
-// RETRIEVE CURRENT LOCATION WHEN CURRENT LOCATION BUTTON CLICKED (geolocation api on MDN)
+// RETRIEVE CURRENT LOCATION WHEN CURRENT LOCATION BUTTON CLICKED
 function retrieveLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-// RECEIVING DATA FROM DEFAULT LOAD OR SEARCH
-function displayWeather(response) {
-  document.querySelector("#current-city").innerHTML = response.data.city;
-  document.querySelector("#current-conditions").innerHTML =
-    response.data.condition.description;
-  document.querySelector(
-    "#current-conditions-icon"
-  ).innerHTML = `<img src="${response.data.condition.icon_url}">`;
-  document.querySelector("#current-temperature").innerHTML = Math.round(
-    response.data.temperature.current
-  );
-  document.querySelector("#feels-like").innerHTML = `${Math.round(
-    response.data.temperature.feels_like
-  )}`;
-  document.querySelector("#windspeed").innerHTML = `${Math.round(
-    response.data.wind.speed * 3.6
-  )}`;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `${response.data.temperature.humidity}`;
-  document.querySelector("#search-city-input").value = ``;
-  //
-  document.querySelector("#format-date").innerHTML = formatDate(
-    response.data.time * 1000
-  ); //
-  getForecast(response);
-}
-
+// adding date for last updated
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -161,6 +134,44 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// RECEIVING DATA FROM DEFAULT LOAD OR SEARCH
+function displayWeather(response) {
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  document.querySelector("#current-city").innerHTML = response.data.city;
+  document.querySelector("#current-conditions").innerHTML =
+    response.data.condition.description;
+  document.querySelector(
+    "#current-conditions-icon"
+  ).innerHTML = `<img src="${response.data.condition.icon_url}">`;
+  document.querySelector("#selected-unit").innerHTML = `°C`;
+
+  celsiusTemperature = Math.round(response.data.temperature.current);
+
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    response.data.temperature.current
+  );
+
+  feelsLikeCelsius = Math.round(response.data.temperature.feels_like);
+
+  document.querySelector("#feels-like").innerHTML = `${Math.round(
+    response.data.temperature.feels_like
+  )}`;
+  document.querySelector("#windspeed").innerHTML = `${Math.round(
+    response.data.wind.speed * 3.6
+  )}`;
+  document.querySelector(
+    "#humidity"
+  ).innerHTML = `${response.data.temperature.humidity}`;
+  document.querySelector("#search-city-input").value = ``;
+  //
+  document.querySelector("#format-date").innerHTML = formatDate(
+    response.data.time * 1000
+  ); //
+  getForecast(response);
+}
+
 // getting Forecast for current or searched city
 function getForecast(response) {
   let apiKey = "a5c1a8d6ca8307bb18045a8ofa2at259";
@@ -180,6 +191,8 @@ function displayForecast(response) {
   document.querySelector("#forecast-description-1").innerHTML =
     response.data.daily[0].condition.description;
 
+  celsiusForecast1 = Math.round(response.data.daily[0].temperature.day);
+
   document.querySelector("#forecast-temp-2").innerHTML = `${Math.round(
     response.data.daily[1].temperature.day
   )}`;
@@ -188,6 +201,8 @@ function displayForecast(response) {
   ).innerHTML = `<img src="${response.data.daily[1].condition.icon_url}">`;
   document.querySelector("#forecast-description-2").innerHTML =
     response.data.daily[1].condition.description;
+
+  celsiusForecast2 = Math.round(response.data.daily[1].temperature.day);
 
   document.querySelector("#forecast-temp-3").innerHTML = `${Math.round(
     response.data.daily[2].temperature.day
@@ -198,6 +213,8 @@ function displayForecast(response) {
   document.querySelector("#forecast-description-3").innerHTML =
     response.data.daily[2].condition.description;
 
+  celsiusForecast3 = Math.round(response.data.daily[2].temperature.day);
+
   document.querySelector("#forecast-temp-4").innerHTML = `${Math.round(
     response.data.daily[3].temperature.day
   )}`;
@@ -207,6 +224,8 @@ function displayForecast(response) {
   document.querySelector("#forecast-description-4").innerHTML =
     response.data.daily[3].condition.description;
 
+  celsiusForecast4 = Math.round(response.data.daily[3].temperature.day);
+
   document.querySelector("#forecast-temp-5").innerHTML = `${Math.round(
     response.data.daily[4].temperature.day
   )}`;
@@ -215,7 +234,63 @@ function displayForecast(response) {
   ).innerHTML = `<img src="${response.data.daily[4].condition.icon_url}">`;
   document.querySelector("#forecast-description-5").innerHTML =
     response.data.daily[4].condition.description;
+
+  celsiusForecast5 = Math.round(response.data.daily[4].temperature.day);
 }
+
+//converts to fahrenheit
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  document.querySelector("#current-temperature").innerHTML =
+    fahrenheitTemperature;
+  document.querySelector("#selected-unit").innerHTML = `°F`;
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+  let feelsLikeFahreneheit = Math.round((feelsLikeCelsius * 9) / 5 + 32);
+  document.querySelector("#feels-like").innerHTML = feelsLikeFahreneheit;
+
+  let forecast1 = Math.round((celsiusForecast1 * 9) / 5 + 32);
+  document.querySelector("#forecast-temp-1").innerHTML = forecast1;
+
+  let forecast2 = Math.round((celsiusForecast2 * 9) / 5 + 32);
+  document.querySelector("#forecast-temp-2").innerHTML = forecast2;
+
+  let forecast3 = Math.round((celsiusForecast3 * 9) / 5 + 32);
+  document.querySelector("#forecast-temp-3").innerHTML = forecast3;
+
+  let forecast4 = Math.round((celsiusForecast4 * 9) / 5 + 32);
+  document.querySelector("#forecast-temp-4").innerHTML = forecast4;
+
+  let forecast5 = Math.round((celsiusForecast5 * 9) / 5 + 32);
+  document.querySelector("#forecast-temp-5").innerHTML = forecast5;
+}
+
+// converts back to celsius
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
+  document.querySelector("#selected-unit").innerHTML = `°C`;
+  document.querySelector("#feels-like").innerHTML = feelsLikeCelsius;
+  document.querySelector("#forecast-temp-1").innerHTML = celsiusForecast1;
+  document.querySelector("#forecast-temp-2").innerHTML = celsiusForecast2;
+  document.querySelector("#forecast-temp-3").innerHTML = celsiusForecast3;
+  document.querySelector("#forecast-temp-4").innerHTML = celsiusForecast4;
+  document.querySelector("#forecast-temp-5").innerHTML = celsiusForecast5;
+}
+
+// global definitions for unit conversion referral
+let celsiusTemperature = null;
+let feelsLikeCelsius = null;
+let celsiusForecast1 = null;
+let celsiusForecast2 = null;
+let celsiusForecast3 = null;
+let celsiusForecast4 = null;
+let celsiusForecast5 = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", citySubmit);
@@ -223,7 +298,12 @@ searchForm.addEventListener("submit", citySubmit);
 let currentLocationBtn = document.querySelector("#current-location-btn");
 currentLocationBtn.addEventListener("click", retrieveLocation);
 
+let fahrenheitLink = document.querySelector("#units-fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#units-celsius");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
 //sending to default load
 searchCity("Vancouver");
-
 // we need fahrenheit conversion
