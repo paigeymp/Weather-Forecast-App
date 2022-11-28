@@ -26,7 +26,7 @@
   </head>
   <body>
     <div class="container containercss">
-      <div class="card weather-app rounded-3 p-5">
+      <div class="card weatherApp rounded-3 p-5">
         <!--Row 1 contains the search input-->
         <div class="row ms-1">
           <div class="col">
@@ -35,7 +35,7 @@
                 type="search"
                 id="search-city-input"
                 name="searchBox"
-                class="searchBox"
+                class="searchBox rounded-2"
                 autocomplete="off"
                 placeholder="Enter a city..."
                 class="rounded-2 border border-1 searchBox"
@@ -54,7 +54,7 @@
                 id="current-location-btn"
                 class="rounded-2 border border-0 submitButton"
               >
-                <i class="fa-solid fa-location-arrow day-weather"></i>
+                <i class="fa-solid fa-location-arrow"></i>
               </button>
             </form>
           </div>
@@ -76,10 +76,14 @@
                 <li>
                   <span class="currentCity" id="current-city"></span>
                 </li>
-                <li class="dayWeather getData" id="current-conditions"></li>
+                <li class="dayWeather capitalize" id="current-conditions"></li>
                 <li>
-                  <span class="day-temp">
-                    <i class="fa-solid fa-cloud-sun day-temp-icon"></i>
+                  <span class="dayTemp">
+                    <span
+                      id="current-conditions-icon"
+                      class="currentConditionsIcon"
+                    >
+                    </span>
                     <span id="current-temperature"></span>
                   </span>
                   <span class="units" id="units-weather">°C</span>
@@ -125,11 +129,15 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-1">day</div>
-              <div class="forecastTemp">
+
+              <div class="forecastTemp" id="forecast-temp-1">10°</div>
+
+              <div id="forecast-icon-1">
                 <i class="fa-solid fa-cloud-sun"></i>
-                10°
               </div>
-              <p class="forecastCondition">A mix of sun and clouds</p>
+              <p class="forecastCondition" id="forecast-description-1">
+                A mix of sun and clouds
+              </p>
             </div>
           </div>
 
@@ -138,11 +146,9 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-2">day</div>
-              <div class="forecastTemp">
-                <i class="fa-solid fa-sun"></i>
-                13°
-              </div>
-              <p class="forecastCondition">Sunny</p>
+              <div class="forecastTemp" id="forecast-temp-2">13°</div>
+              <div id="forecast-icon-2"><i class="fa-solid fa-sun"></i></div>
+              <p class="forecastCondition" id="forecast-description-2">Sunny</p>
             </div>
           </div>
 
@@ -151,11 +157,13 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-3">day</div>
-              <div class="forecastTemp">
+              <div class="forecastTemp" id="forecast-temp-3">10°</div>
+              <div id="forecast-icon-3">
                 <i class="fa-solid fa-cloud-sun-rain"></i>
-                10°
               </div>
-              <p class="forecastCondition">Scattered showers</p>
+              <p class="forecastCondition" id="forecast-description-3">
+                Scattered showers
+              </p>
             </div>
           </div>
 
@@ -164,11 +172,9 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-4">day</div>
-              <div class="forecastTemp">
-                <i class="fa-solid fa-sun"></i>
-                9°
-              </div>
-              <p class="forecastCondition">Sunny</p>
+              <div class="forecastTemp" id="forecast-temp-4">13°</div>
+              <div id="forecast-icon-4"><i class="fa-solid fa-sun"></i></div>
+              <p class="forecastCondition" id="forecast-description-4">Sunny</p>
             </div>
           </div>
 
@@ -177,23 +183,20 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-5">day</div>
-              <div class="forecastTemp">
-                <i class="fa-solid fa-sun"></i>
-                11°
-              </div>
-              <p class="forecastCondition">Sunny</p>
+              <div class="forecastTemp" id="forecast-temp-5">13°</div>
+              <div id="forecast-icon-5"><i class="fa-solid fa-sun"></i></div>
+              <p class="forecastCondition" id="forecast-description-5">Sunny</p>
             </div>
           </div>
         </div>
       </div>
       <footer>
-        This project was coded by Paige Powell and is open-sourced on
         <a
           href="https://github.com/paigeymp/Weather-Forecast-App"
           target="_blank"
-          >GitHub</a
+          >Open-source code</a
         >
-        and hosted on
+        by Paige Powell hosted on
         <a href="https://www.netlify.com/" target="_blank">Netlify</a> <br />
         Background image by Pixabay on
         <a

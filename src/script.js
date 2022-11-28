@@ -80,9 +80,8 @@ getForecastDays();
 
 // DEFAULT LOCATION ON LOAD ... searches for a specific city weather
 function searchCity(city) {
-  let apiKey = "a2b6c35b0519344cba097ba7853d0e6f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+  let apiKey = "a5c1a8d6ca8307bb18045a8ofa2at259";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -95,8 +94,8 @@ function citySubmit(event) {
 
 // Receiving current location from geolocation api
 function searchLocation(position) {
-  let apiKey = "a2b6c35b0519344cba097ba7853d0e6f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "a5c1a8d6ca8307bb18045a8ofa2at259";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -108,21 +107,24 @@ function retrieveLocation(event) {
 
 // RECEIVING DATA FROM DEFAULT LOAD OR SEARCH
 function displayWeather(response) {
-  document.querySelector("#current-city").innerHTML = response.data.name;
+  document.querySelector("#current-city").innerHTML = response.data.city;
   document.querySelector("#current-conditions").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
+  document.querySelector(
+    "#current-conditions-icon"
+  ).innerHTML = `<img src="${response.data.condition.icon_url}">`;
   document.querySelector("#current-temperature").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
   document.querySelector("#feels-like").innerHTML = `${Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   )}`;
   document.querySelector("#windspeed").innerHTML = `${Math.round(
     response.data.wind.speed * 3.6
   )}`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `${response.data.main.humidity}`;
+  ).innerHTML = `${response.data.temperature.humidity}`;
   document.querySelector("#search-city-input").value = ``;
 }
 
@@ -133,6 +135,6 @@ let currentLocationBtn = document.querySelector("#current-location-btn");
 currentLocationBtn.addEventListener("click", retrieveLocation);
 
 //sending to default load
-searchCity("Toronto");
+searchCity("Vancouver");
 
 // we need 5 day forecast, fahrenheit conversion, icons to reflect weather

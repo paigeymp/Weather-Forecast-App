@@ -9,7 +9,7 @@ footer {
   color: rgb(185, 174, 175);
 }
 
-.weather-app {
+.weatherApp {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/051/864/original/cloudypixabay.jpg?1667750633");
   filter: brightness(100%);
   background-size: cover;
@@ -45,18 +45,18 @@ footer {
   font-size: 14px;
 }
 
-.getData {
+.capitalize {
   text-transform: capitalize;
 }
 
-.day-temp-icon {
+.currentConditionsIcon {
   font-size: 25px;
   margin-right: 1px;
   position: relative;
   top: -10px;
 }
 
-.day-temp {
+.dayTemp {
   font-weight: 600;
   font-size: 50px;
 }
