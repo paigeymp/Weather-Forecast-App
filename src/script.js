@@ -11,8 +11,8 @@ function getTodayDate() {
   }
   let year = currentDate.getFullYear();
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // days numbered from 0-6
-  let day = days[currentDate.getDay()]; //the day is going to be the result of days, which will get its value by correlating the .getDay index with the days object that we've created.
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[currentDate.getDay()];
 
   let months = [
     "Jan",
@@ -58,20 +58,25 @@ function getForecastDays() {
     "Sat",
   ];
 
-  let day1 = document.querySelector("#day-1");
-  day1.innerHTML = `${weekDays[currentDate.getDay() + 1]}`;
+  document.querySelector("#day-1").innerHTML = `${
+    weekDays[currentDate.getDay() + 1]
+  }`;
 
-  let day2 = document.querySelector("#day-2");
-  day2.innerHTML = `${weekDays[currentDate.getDay() + 2]}`;
+  document.querySelector("#day-2").innerHTML = `${
+    weekDays[currentDate.getDay() + 2]
+  }`;
 
-  let day3 = document.querySelector("#day-3");
-  day3.innerHTML = `${weekDays[currentDate.getDay() + 3]}`;
+  document.querySelector("#day-3").innerHTML = `${
+    weekDays[currentDate.getDay() + 3]
+  }`;
 
-  let day4 = document.querySelector("#day-4");
-  day4.innerHTML = `${weekDays[currentDate.getDay() + 4]}`;
+  document.querySelector("#day-4").innerHTML = `${
+    weekDays[currentDate.getDay() + 4]
+  }`;
 
-  let day5 = document.querySelector("#day-5");
-  day5.innerHTML = `${weekDays[currentDate.getDay() + 5]}`;
+  document.querySelector("#day-5").innerHTML = `${
+    weekDays[currentDate.getDay() + 5]
+  }`;
 }
 
 getForecastDays();
@@ -126,9 +131,37 @@ function displayWeather(response) {
     "#humidity"
   ).innerHTML = `${response.data.temperature.humidity}`;
   document.querySelector("#search-city-input").value = ``;
+  //
+  document.querySelector("#format-date").innerHTML = formatDate(
+    response.data.time * 1000
+  ); //
   getForecast(response);
 }
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
+// getting Forecast for current or searched city
 function getForecast(response) {
   let apiKey = "a5c1a8d6ca8307bb18045a8ofa2at259";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${response.data.city}&key=${apiKey}&units=metric`;
@@ -136,6 +169,7 @@ function getForecast(response) {
   console.log(apiUrl);
 }
 
+// displaying forecast for current or searched city
 function displayForecast(response) {
   document.querySelector("#forecast-temp-1").innerHTML = `${Math.round(
     response.data.daily[0].temperature.day

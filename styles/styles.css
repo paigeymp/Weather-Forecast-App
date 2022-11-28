@@ -21,6 +21,11 @@ footer {
   font-family: "Open Sans", sans-serif;
 }
 
+.currentDateTime {
+  font-size: 16px;
+  color: white;
+}
+
 .currentCity {
   font-size: 24px;
   text-transform: capitalize;
@@ -40,7 +45,7 @@ footer {
   text-decoration: none;
 }
 
-.dayWeather {
+.generalText {
   font-weight: 100;
   font-size: 14px;
 }
@@ -53,7 +58,7 @@ footer {
   font-size: 25px;
   margin-right: 1px;
   position: relative;
-  top: -10px;
+  top: -15px;
 }
 
 .dayTemp {
@@ -61,27 +66,17 @@ footer {
   font-size: 50px;
 }
 
-.forecastTemp {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.forecast {
-  font-size: 14px;
-}
-
 .forecastCondition {
   font-size: 12px;
   font-weight: 100;
-  margin-top: 5px;
+  margin-top: 2px;
+}
+
+.forecastCondition:first-letter {
   text-transform: capitalize;
 }
 
-.searchIcon,
-.currentLocationIcon,
-.locationButton,
-.searchBox {
+.search {
   font-weight: 200;
   font-size: 15px;
   color: #ababb5;

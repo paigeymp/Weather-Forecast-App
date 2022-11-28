@@ -35,10 +35,9 @@
                 type="search"
                 id="search-city-input"
                 name="searchBox"
-                class="searchBox rounded-2"
                 autocomplete="off"
                 placeholder="Enter a city..."
-                class="rounded-2 border border-1 searchBox"
+                class="rounded-2 border border-1 search"
               />
 
               <button
@@ -47,7 +46,7 @@
                 name="submitButton"
                 class="rounded-2 border border-0 submitButton"
               >
-                <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+                <i class="fa-solid fa-magnifying-glass search"></i>
               </button>
 
               <button
@@ -58,25 +57,24 @@
               </button>
             </form>
           </div>
+        </div>
+        <div class="row ms-1">
           <div class="col">
-            <span
-              class="badge rounded-pill text-bg-primary me-5"
-              id="current-date-time"
-            >
-            </span>
+            <span class="generalText" id="current-date-time"> </span>
           </div>
         </div>
 
         <!--Row 2 contains info-->
 
         <div class="position-relative">
-          <div class="row ms-1 text-center mt-5 m-3">
+          <div class="row ms-1 text-center m-3">
             <div class="col">
               <ul>
                 <li>
                   <span class="currentCity" id="current-city"></span>
                 </li>
-                <li class="dayWeather capitalize" id="current-conditions"></li>
+
+                <li class="generalText capitalize" id="current-conditions"></li>
                 <li>
                   <span class="dayTemp">
                     <span
@@ -88,19 +86,19 @@
                   </span>
                   <span class="units" id="units-weather">°C</span>
                 </li>
-                <li class="dayWeather">
+                <li class="generalText">
                   <em>
                     Feels like
                     <span id="feels-like" class="feelsLike"></span>
                   </em>
                 </li>
 
-                <li class="dayWeather mt-3">
+                <li class="generalText mt-3">
                   <i class="fa-solid fa-wind day-precip"></i> Wind:
                   <span id="windspeed"></span> km/h
                 </li>
 
-                <li class="dayWeather">
+                <li class="generalText">
                   <i class="fa-solid fa-droplet day-precip"></i> Humidity:
                   <span id="humidity"></span>%
                 </li>
@@ -113,6 +111,12 @@
                     ><span class="clickUnits">°F</span></a
                   >
                 </li>
+                <li class="mt-1 generalText">
+                  <em>
+                    Last updated:
+                    <span id="format-date"></span
+                  ></em>
+                </li>
               </ul>
             </div>
           </div>
@@ -121,7 +125,7 @@
         <!--Row 3 is the forecast-->
 
         <div class="row m-1 p-1">
-          <p class="forecast">Next 5 days</p>
+          <p class="generalText">Next 5 days</p>
           <hr />
 
           <!--1-->
@@ -129,12 +133,12 @@
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
               <div id="day-1"></div>
-              <div class="forecastTemp">
+              <div class="generalText mt-2">
                 <span id="forecast-temp-1"></span>
                 <span>°</span>
               </div>
 
-              <div id="forecast-icon-1"></div>
+              <span id="forecast-icon-1"></span>
               <p class="forecastCondition" id="forecast-description-1"></p>
             </div>
           </div>
@@ -143,13 +147,13 @@
 
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
-              <div id="day-2">day</div>
-              <div class="forecastTemp">
+              <div id="day-2"></div>
+              <div class="generalText mt-2">
                 <span id="forecast-temp-2"></span>
                 <span>°</span>
               </div>
-              <div id="forecast-icon-2"><i class="fa-solid fa-sun"></i></div>
-              <p class="forecastCondition" id="forecast-description-2">Sunny</p>
+              <span id="forecast-icon-2"></span>
+              <p class="forecastCondition" id="forecast-description-2"></p>
             </div>
           </div>
 
@@ -157,17 +161,13 @@
 
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
-              <div id="day-3">day</div>
-              <div class="forecastTemp">
+              <div id="day-3"></div>
+              <div class="generalText mt-2">
                 <span id="forecast-temp-3"></span>
                 <span>°</span>
               </div>
-              <div id="forecast-icon-3">
-                <i class="fa-solid fa-cloud-sun-rain"></i>
-              </div>
-              <p class="forecastCondition" id="forecast-description-3">
-                Scattered showers
-              </p>
+              <span id="forecast-icon-3"></span>
+              <p class="forecastCondition" id="forecast-description-3"></p>
             </div>
           </div>
 
@@ -175,13 +175,13 @@
 
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
-              <div id="day-4">day</div>
-              <div class="forecastTemp">
+              <div id="day-4"></div>
+              <div class="generalText mt-2">
                 <span id="forecast-temp-4"></span>
                 <span>°</span>
               </div>
-              <div id="forecast-icon-4"><i class="fa-solid fa-sun"></i></div>
-              <p class="forecastCondition" id="forecast-description-4">Sunny</p>
+              <span id="forecast-icon-4"></span>
+              <p class="forecastCondition" id="forecast-description-4"></p>
             </div>
           </div>
 
@@ -189,13 +189,13 @@
 
           <div class="col bg-dark m-1 rounded bg-opacity-50">
             <div class="text-center text-light">
-              <div id="day-5">day</div>
-              <div class="forecastTemp">
+              <div id="day-5"></div>
+              <div class="generalText mt-2">
                 <span id="forecast-temp-5"></span>
                 <span>°</span>
               </div>
-              <div id="forecast-icon-5"><i class="fa-solid fa-sun"></i></div>
-              <p class="forecastCondition" id="forecast-description-5">Sunny</p>
+              <span id="forecast-icon-5"></span>
+              <p class="forecastCondition" id="forecast-description-5"></p>
             </div>
           </div>
         </div>
