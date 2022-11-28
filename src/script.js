@@ -249,8 +249,8 @@ function displayFahrenheitTemperature(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 
-  let feelsLikeFahreneheit = Math.round((feelsLikeCelsius * 9) / 5 + 32);
-  document.querySelector("#feels-like").innerHTML = feelsLikeFahreneheit;
+  let feelsLikeFahrenheit = Math.round((feelsLikeCelsius * 9) / 5 + 32);
+  document.querySelector("#feels-like").innerHTML = feelsLikeFahrenheit;
 
   let forecast1 = Math.round((celsiusForecast1 * 9) / 5 + 32);
   document.querySelector("#forecast-temp-1").innerHTML = forecast1;
