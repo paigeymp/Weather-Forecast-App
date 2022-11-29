@@ -182,60 +182,52 @@ function getForecast(response) {
 
 // displaying forecast for current or searched city
 function displayForecast(response) {
+  let forecastDay = response.data.daily;
+
   document.querySelector("#forecast-temp-1").innerHTML = `${Math.round(
-    response.data.daily[0].temperature.day
+    forecastDay[1].temperature.day
   )}`;
   document.querySelector(
     "#forecast-icon-1"
-  ).innerHTML = `<img src="${response.data.daily[0].condition.icon_url}">`;
-  document.querySelector("#forecast-description-1").innerHTML =
-    response.data.daily[0].condition.description;
+  ).innerHTML = `<img src="${forecastDay[1].condition.icon_url}">`;
 
-  celsiusForecast1 = Math.round(response.data.daily[0].temperature.day);
+  celsiusForecast1 = Math.round(forecastDay[1].temperature.day);
 
   document.querySelector("#forecast-temp-2").innerHTML = `${Math.round(
-    response.data.daily[1].temperature.day
+    forecastDay[2].temperature.day
   )}`;
   document.querySelector(
     "#forecast-icon-2"
-  ).innerHTML = `<img src="${response.data.daily[1].condition.icon_url}">`;
-  document.querySelector("#forecast-description-2").innerHTML =
-    response.data.daily[1].condition.description;
+  ).innerHTML = `<img src="${forecastDay[2].condition.icon_url}">`;
 
-  celsiusForecast2 = Math.round(response.data.daily[1].temperature.day);
+  celsiusForecast2 = Math.round(forecastDay[2].temperature.day);
 
   document.querySelector("#forecast-temp-3").innerHTML = `${Math.round(
-    response.data.daily[2].temperature.day
+    forecastDay[3].temperature.day
   )}`;
   document.querySelector(
     "#forecast-icon-3"
-  ).innerHTML = `<img src="${response.data.daily[2].condition.icon_url}">`;
-  document.querySelector("#forecast-description-3").innerHTML =
-    response.data.daily[2].condition.description;
+  ).innerHTML = `<img src="${forecastDay[3].condition.icon_url}">`;
 
-  celsiusForecast3 = Math.round(response.data.daily[2].temperature.day);
+  celsiusForecast3 = Math.round(forecastDay[3].temperature.day);
 
   document.querySelector("#forecast-temp-4").innerHTML = `${Math.round(
-    response.data.daily[3].temperature.day
+    forecastDay[4].temperature.day
   )}`;
   document.querySelector(
     "#forecast-icon-4"
-  ).innerHTML = `<img src="${response.data.daily[3].condition.icon_url}">`;
-  document.querySelector("#forecast-description-4").innerHTML =
-    response.data.daily[3].condition.description;
+  ).innerHTML = `<img src="${forecastDay[4].condition.icon_url}">`;
 
-  celsiusForecast4 = Math.round(response.data.daily[3].temperature.day);
+  celsiusForecast4 = Math.round(forecastDay[4].temperature.day);
 
   document.querySelector("#forecast-temp-5").innerHTML = `${Math.round(
-    response.data.daily[4].temperature.day
+    forecastDay[5].temperature.day
   )}`;
   document.querySelector(
     "#forecast-icon-5"
-  ).innerHTML = `<img src="${response.data.daily[4].condition.icon_url}">`;
-  document.querySelector("#forecast-description-5").innerHTML =
-    response.data.daily[4].condition.description;
+  ).innerHTML = `<img src="${forecastDay[5].condition.icon_url}">`;
 
-  celsiusForecast5 = Math.round(response.data.daily[4].temperature.day);
+  celsiusForecast5 = Math.round(forecastDay[5].temperature.day);
 }
 
 //converts to fahrenheit
