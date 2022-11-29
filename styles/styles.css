@@ -55,6 +55,11 @@ footer {
   font-size: 14px;
 }
 
+.forecastText {
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
