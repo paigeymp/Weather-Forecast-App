@@ -40,7 +40,6 @@ dateElement.innerHTML = getTodayDate(currentDate);
 // next 5 days forecast
 
 function getForecastDays() {
-  //currentDate defined with getTodayDate function. This might need to be improved.
   let weekDays = [
     "Sun",
     "Mon",
@@ -165,10 +164,10 @@ function displayWeather(response) {
     "#humidity"
   ).innerHTML = `${response.data.temperature.humidity}`;
   document.querySelector("#search-city-input").value = ``;
-  //
+
   document.querySelector("#format-date").innerHTML = formatDate(
     response.data.time * 1000
-  ); //
+  );
   getForecast(response);
 }
 
@@ -260,7 +259,7 @@ function displayFahrenheitTemperature(event) {
   document.querySelector("#forecast-temp-5").innerHTML = forecast5;
 }
 
-// converts back to celsius
+// converts to celsius
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
@@ -298,4 +297,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 //sending to default load
 searchCity("Vancouver");
-// we need fahrenheit conversion
